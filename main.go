@@ -9,7 +9,7 @@ import (
 	"example.com/goserver/handlers"
 )
 
-const PORT = ":8080"
+const PORT = "0.0.0.0:1965"
 const REQ_LOGGING = true
 
 // Middleware: Ensures that file listings are not served

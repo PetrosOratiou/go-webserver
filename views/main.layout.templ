@@ -1,0 +1,29 @@
+package views
+
+templ Base(title string) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css" />
+    <title>{title}</title>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <a hx-get="/home" hx-target="#content" hx-select="#content" hx-swap="outerHTML" hx-replace-url="true">Home</a>
+            <a hx-get="/about" hx-target="#content" hx-select="#content" hx-swap="outerHTML" hx-replace-url="true">About</a>
+            <a hx-get="/contact" hx-target="#content" hx-select="#content" hx-swap="outerHTML" hx-replace-url="true">Contact</a>
+        </nav>
+    </header>
+    <main id="content" class="main-content">
+        {children...}
+    </main>
+    <footer class="main-footer">
+        Made by petros.oratiou using GO - 2024
+    </footer>
+    <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
+</body>
+</html>
+}

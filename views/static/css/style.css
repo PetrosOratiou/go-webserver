@@ -15,6 +15,8 @@ body {
 }
 
 .main-nav a {
+    background-color: transparent;
+    border: none;
     margin-right: 10px;
     padding: 20px 10px;
     text-decoration: none;
@@ -25,8 +27,7 @@ body {
 .main-nav a:hover {
     background-color: rgb(60, 0, 116);
     text-decoration: underline;
-    color: #ffffff;
-    transition-duration: 100ms;
+    border-radius: 10px;
 }
 
 .main-footer {

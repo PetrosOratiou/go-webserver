@@ -39,10 +39,15 @@ func main() {
 
 	// page handlers
 	http.Handle("GET /", logReq(http.HandlerFunc(handlers.HomeHandler)))
+
 	http.Handle("GET /home", logReq(http.HandlerFunc(handlers.HomeHandler)))
+
 	http.Handle("GET /contact", logReq(http.HandlerFunc(handlers.ContactHandler)))
+
 	http.Handle("GET /about", logReq(http.HandlerFunc(handlers.AboutHandler)))
-	http.Handle("GET /users", logReq(http.HandlerFunc(handlers.ManageUsersHandler)))
+
+	http.Handle("GET /users", logReq(http.HandlerFunc(handlers.GetUsersHandler)))
+	http.Handle("POST /users", logReq(http.HandlerFunc(handlers.PostUserHandler)))
 
 	// static file handler
 	fs := http.FileServer(http.Dir("./views/static"))

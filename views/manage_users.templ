@@ -5,7 +5,10 @@ import (
 	"strconv"
 )
 
-templ UsersTable(users []models.User) {
+templ UsersTable(users []*models.User) {
+	<h1 class="display-1">Manage Users</h1>
+	<p>Note: Changes done here are only in main memmory. Database is not set up yet.</p>
+	@UserCreationForm()
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -14,14 +17,34 @@ templ UsersTable(users []models.User) {
 				<th scope="col">Email</th>
 			</tr>
 		</thead>
-		<tbody>
-			for i, user := range users {
-				<tr>
-					<th scope="row">{ strconv.Itoa(i) }</th>
-					<td>{ user.Username }</td>
-					<td>{ user.Email }</td>
-				</tr>
+		<tbody id="users-table">
+			for _, user := range users {
+				@UserTableRow(user)
 			}
 		</tbody>
 	</table>
+}
+
+templ UserTableRow(u *models.User) {
+	<tr>
+		<th scope="row">{ strconv.Itoa(u.Id) }</th>
+		<td>{ u.Username }</td>
+		<td>{ u.Email }</td>
+	</tr>
+}
+
+templ UserCreationForm() {
+	<form hx-post="/users" hx-target="#users-table" hx-swap="beforeend">
+		<div class="row g-3">
+			<div class="col">
+				<input type="text" name="username" class="form-control" placeholder="Username"/>
+			</div>
+			<div class="col">
+				<input type="email" name="email" class="form-control" placeholder="Email"/>
+			</div>
+			<div class="col-12">
+				<button type="submit" class="btn btn-primary">Create User</button>
+			</div>
+		</div>
+	</form>
 }

@@ -84,17 +84,14 @@ func SelectUsers() ([]*models.User, error) {
 	if db, err = sql.Open("sqlite3", "sql/local.db"); err != nil {
 		return nil, err
 	}
-	rows, err := db.Query(`SELECT rowid, username, email FROM users`)
-	if err != nil {
+	var rows *sql.Rows
+	if rows, err = db.Query(`SELECT rowid, username, email FROM users`); err != nil {
 		return nil, err
 	}
-	fmt.Println(rows)
-
 	users := []*models.User{}
 	for rows.Next() {
 		u := models.User{}
-		fmt.Println(u)
-		if err := rows.Scan(&u.Id, &u.Username, &u.Email); err != nil {
+		if err = rows.Scan(&u.Id, &u.Username, &u.Email); err != nil {
 			return nil, err
 		}
 		users = append(users, &u)

@@ -7,7 +7,8 @@ import (
 
 templ UsersTable(users []*models.User) {
 	<h1 class="display-1">Manage Users</h1>
-	<p>Note: Changes done here are only in main memmory. Database is not set up yet.</p>
+	<p>The users below are stored in the database. The POST /users endpoint returns a <tt>&lt;tr&gt;</tt> element with the user information,
+	while the GET /users endpoint returns the <tt>&lt;table&gt;</tt> element. Each newly created user is added to the table via HTMX</p>
 	@UserCreationForm()
 	<table class="table table-striped">
 		<thead>

@@ -1,14 +1,14 @@
 package views
 
 templ About(hxReq bool) {
-    if !hxReq {
-        @Base("About", about())
-    } else {
-        @about()
-    }
+	if !hxReq {
+		@Base("About", about())
+	} else {
+		@about()
+	}
 }
 
 templ about() {
-    <h1>About</h1>
-    <p>Work in progress. Come back later! 🛠️</p>
+	<h1 class="display-1">About</h1>
+	<p>Work in progress. Come back later! 🛠️</p>
 }

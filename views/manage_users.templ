@@ -1,0 +1,27 @@
+package views
+
+import (
+	"example.com/goserver/models"
+	"strconv"
+)
+
+templ UsersTable(users []models.User) {
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Username</th>
+				<th scope="col">Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			for i, user := range users {
+				<tr>
+					<th scope="row">{ strconv.Itoa(i) }</th>
+					<td>{ user.Username }</td>
+					<td>{ user.Email }</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}

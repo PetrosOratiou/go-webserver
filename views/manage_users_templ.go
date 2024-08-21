@@ -31,7 +31,7 @@ func UsersTable(users []*models.User) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1 class=\"display-1\">Manage Users</h1><p>The users below are stored in the database. The POST /users endpoint returns a <tt>&lt;tr&gt;</tt> element with the user information, while the GET /users endpoint returns the <tt>&lt;table&gt;</tt> element. Each newly created user is added to the table </p>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1 class=\"display-1\">Manage Users</h1><p>The users below are stored in the database. The POST /users endpoint returns a <tt>&lt;tr&gt;</tt> element with the user information, while the GET /users endpoint returns the <tt>&lt;table&gt;</tt> element. Each newly created user is added to the table via HTMX</p>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -11,20 +11,6 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func ExampleUsers() []models.User {
-	return []models.User{
-		{Id: 1, Username: "Bob", Email: "bob@example.com"},
-		{Id: 2, Username: "George", Email: "george@example.com"},
-		{Id: 3, Username: "Mary", Email: "mary@example.com"},
-		{Id: 4, Username: "Jane", Email: "jane@example.com"},
-		{Id: 5, Username: "Andy", Email: "andy@example.com"},
-	}
-}
-
-type Users struct {
-	List []models.User
-}
-
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("GetUsersHandler")
 	hxReq, _ := strconv.ParseBool(r.Header.Get("HX-Request"))

@@ -6,8 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"example.com/goserver/views"
-	"github.com/a-h/templ"
+	"example.com/goserver/handlers"
 )
 
 const PORT = "0.0.0.0:5678"
@@ -39,14 +38,10 @@ func main() {
 	// u := models.User{Id: 123, Username: "John Doe", Email: "john.doe@example.com"}
 
 	// page handlers
-	// http.Handle("GET /", logReq(http.HandlerFunc(handlers.HomeHandler)))
-	// http.Handle("GET /home", logReq(http.HandlerFunc(handlers.HomeHandler)))
-	// http.Handle("GET /contact", logReq(http.HandlerFunc(handlers.ContactHandler)))
-	// http.Handle("GET /about", logReq(http.HandlerFunc(handlers.AboutHandler)))
-	http.Handle("GET /", logReq(templ.Handler(views.Home())))
-	http.Handle("GET /home", logReq(templ.Handler(views.Home())))
-	http.Handle("GET /contact", logReq(templ.Handler(views.Contact())))
-	http.Handle("GET /about", logReq(templ.Handler(views.About())))
+	http.Handle("GET /", logReq(http.HandlerFunc(handlers.HomeHandler)))
+	http.Handle("GET /home", logReq(http.HandlerFunc(handlers.HomeHandler)))
+	http.Handle("GET /contact", logReq(http.HandlerFunc(handlers.ContactHandler)))
+	http.Handle("GET /about", logReq(http.HandlerFunc(handlers.AboutHandler)))
 
 	// static file handler
 	fs := http.FileServer(http.Dir("./views/static"))

@@ -2,8 +2,12 @@ package handlers
 
 import (
 	"net/http"
+	"strconv"
+
+	"example.com/goserver/views"
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	// views.Base("Home", views.Home()).Render(r.Context(), w)
+	hxReq, _ := strconv.ParseBool(r.Header.Get("HX-Request"))
+	views.Home(hxReq).Render(r.Context(), w)
 }

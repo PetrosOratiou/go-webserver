@@ -1,6 +1,6 @@
 package views
 
-templ Base(title string) {
+templ Base(title string, mainContent templ.Component) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +12,13 @@ templ Base(title string) {
 <body>
     <header>
         <nav class="main-nav">
-            <a hx-get="/home" hx-target="#content" hx-select="#content" hx-swap="outerHTML" hx-replace-url="true">Home</a>
-            <a hx-get="/about" hx-target="#content" hx-select="#content" hx-swap="outerHTML" hx-replace-url="true">About</a>
-            <a hx-get="/contact" hx-target="#content" hx-select="#content" hx-swap="outerHTML" hx-replace-url="true">Contact</a>
+            <a hx-get="/home" hx-target="#content" hx-replace-url="true">Home</a>
+            <a hx-get="/about" hx-target="#content" hx-replace-url="true">About</a>
+            <a hx-get="/contact" hx-target="#content" hx-replace-url="true">Contact</a>
         </nav>
     </header>
     <main id="content" class="main-content">
-        {children...}
+        @mainContent
     </main>
     <footer class="main-footer">
         Made by petros.oratiou using GO - 2024

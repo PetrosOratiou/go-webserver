@@ -8,7 +8,7 @@ package views
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Base(title string) templ.Component {
+func Base(title string, mainContent templ.Component) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -39,11 +39,11 @@ func Base(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title></head><body><header><nav class=\"main-nav\"><a hx-get=\"/home\" hx-target=\"#content\" hx-select=\"#content\" hx-swap=\"outerHTML\" hx-replace-url=\"true\">Home</a> <a hx-get=\"/about\" hx-target=\"#content\" hx-select=\"#content\" hx-swap=\"outerHTML\" hx-replace-url=\"true\">About</a> <a hx-get=\"/contact\" hx-target=\"#content\" hx-select=\"#content\" hx-swap=\"outerHTML\" hx-replace-url=\"true\">Contact</a></nav></header><main id=\"content\" class=\"main-content\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title></head><body><header><nav class=\"main-nav\"><a hx-get=\"/home\" hx-target=\"#content\" hx-replace-url=\"true\">Home</a> <a hx-get=\"/about\" hx-target=\"#content\" hx-replace-url=\"true\">About</a> <a hx-get=\"/contact\" hx-target=\"#content\" hx-replace-url=\"true\">Contact</a></nav></header><main id=\"content\" class=\"main-content\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = mainContent.Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

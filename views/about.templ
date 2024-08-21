@@ -1,8 +1,14 @@
 package views
 
-templ About() {
-    @Base("About") {
-        <h1>About</h1>
-        <p>Work in progress. Come back later! 🛠️</p>
+templ About(hxReq bool) {
+    if !hxReq {
+        @Base("About", about())
+    } else {
+        @about()
     }
+}
+
+templ about() {
+    <h1>About</h1>
+    <p>Work in progress. Come back later! 🛠️</p>
 }
